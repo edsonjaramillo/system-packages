@@ -1,0 +1,50 @@
+version: "3"
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+    silent: true
+
+  fmt:
+    desc: Format all Nix files
+    cmds:
+      - alejandra .
+
+  check:
+    desc: Validate package bundles for all supported systems
+    cmds:
+      - nix flake check --all-systems
+
+  build:
+    desc: Build the package bundle for this system
+    cmds:
+      - nix build path:.#default --no-link --print-build-logs
+
+  install:
+    desc: Install the package bundle into the Nix profile
+    cmds:
+      - nix profile add path:.#default --priority 4
+
+  update:
+    desc: Update nixpkgs, validate, and apply the new bundle
+    cmds:
+      - nix flake update
+      - task: apply
+
+  profile:
+    desc: Show packages installed in the active Nix profile
+    cmds:
+      - nix profile list
+
+  history:
+    desc: Show Nix profile generations
+    cmds:
+      - nix profile history
+
+  rollback:
+    desc: Roll back to the previous Nix profile generation
+    prompt: Roll back the active Nix profile?
+    cmds:
+      - nix profile rollback
