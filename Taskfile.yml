@@ -31,7 +31,29 @@ tasks:
     desc: Update nixpkgs, validate, and apply the new bundle
     cmds:
       - nix flake update
-      - task: apply
+      - task: check
+      - task: install
+
+  brew:check:
+    desc: Check whether all Brewfile dependencies are installed
+    cmds:
+      - brew bundle check --verbose --file Brewfile
+
+  brew:install:
+    desc: Install and upgrade Brewfile dependencies
+    cmds:
+      - brew bundle install --file Brewfile
+
+  brew:list:
+    desc: List dependencies declared in the Brewfile
+    cmds:
+      - brew bundle list --all --file Brewfile
+
+  brew:cleanup:
+    desc: Uninstall Homebrew dependencies not declared in the Brewfile
+    prompt: Uninstall Homebrew dependencies not declared in the Brewfile?
+    cmds:
+      - brew bundle cleanup --force --file Brewfile
 
   profile:
     desc: Show packages installed in the active Nix profile

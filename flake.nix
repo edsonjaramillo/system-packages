@@ -8,7 +8,6 @@
       ./modules/cli.nix
       ./modules/editor.nix
       ./modules/shell.nix
-      ./modules/apps/shared-apps.nix
     ];
 
     mkBundle = system: modules: let
@@ -23,11 +22,7 @@
       };
   in {
     packages = {
-      aarch64-darwin.default = mkBundle "aarch64-darwin" (sharedModules
-        ++ [
-          ./modules/apps/darwin-apps.nix
-        ]);
-
+      aarch64-darwin.default = mkBundle "aarch64-darwin" sharedModules;
       x86_64-linux.default = mkBundle "x86_64-linux" sharedModules;
     };
   };
