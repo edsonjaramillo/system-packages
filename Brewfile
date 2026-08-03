@@ -1,4 +1,5 @@
 cask "discord"
 cask "obsidian"
+cask "orbstack"
 cask "raycast"
 cask "wezterm"
