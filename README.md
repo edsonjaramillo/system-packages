@@ -29,20 +29,22 @@ Run `task` to list the available commands.
 
 | Command | Description |
 | --- | --- |
-| `task install` | Install the current bundle into the active Nix profile |
-| `task build` | Build the bundle without installing it |
-| `task check` | Validate the flake for every supported system |
-| `task fmt` | Format all Nix files with Alejandra |
-| `task profile` | List packages in the active Nix profile |
-| `task history` | Show profile generations |
-| `task rollback` | Roll back to the previous profile generation |
+| `task install` | Install the Nix, Homebrew, and Bun packages |
+| `task install:nix` | Install the current bundle into the active Nix profile |
+| `task install:brew` | Install and upgrade Brewfile dependencies on macOS |
+| `task install:bun` | Install dependencies from the Bun lockfile |
+| `task build:nix` | Build the Nix bundle without installing it |
+| `task check` | Check the Nix and Homebrew package sources |
+| `task fmt:nix` | Format all Nix files with Alejandra |
+| `task update` | Update, validate, and install all package sources |
+| `task profile:nix` | List packages in the active Nix profile |
+| `task history:nix` | Show Nix profile generations |
+| `task rollback:nix` | Roll back to the previous profile generation |
 
-To update the pinned `nixpkgs` revision and reinstall the bundle:
+To update, validate, and install all package sources:
 
 ```sh
-nix flake update
-task check
-task install
+task update
 ```
 
 ## Package organization
@@ -53,4 +55,4 @@ task install
 - `modules/apps/shared-apps.nix`: desktop applications shared across platforms
 - `modules/apps/darwin-apps.nix`: macOS-only applications
 
-After changing a module, run `task check` and `task install` to apply it.
+After changing a module, run `task check:nix` and `task install:nix` to apply it.

@@ -7,65 +7,108 @@ tasks:
       - task --list
     silent: true
 
-  fmt:
+  fmt:nix:
     desc: Format all Nix files
     cmds:
       - alejandra .
 
   check:
-    desc: Validate package bundles for all supported systems
+    desc: Check all package sources
+    cmds:
+      - task: check:nix
+      - task: check:brew
+
+  check:nix:
+    desc: Validate Nix package bundles for all supported systems
     cmds:
       - nix flake check --all-systems
 
-  build:
-    desc: Build the package bundle for this system
+  check:brew:
+    desc: Check whether all Brewfile dependencies are installed
+    platforms: [darwin]
+    cmds:
+      - brew bundle check --verbose --file Brewfile
+
+  build:nix:
+    desc: Build the Nix package bundle for this system
     cmds:
       - nix build path:.#default --no-link --print-build-logs
 
   install:
+    desc: Install all package sources
+    cmds:
+      - task: install:nix
+      - task: install:brew
+      - task: install:bun
+
+  install:nix:
     desc: Install the package bundle into the Nix profile
     cmds:
       - nix profile add path:.#default --priority 4
 
-  update:
-    desc: Update nixpkgs, validate, and apply the new bundle
-    cmds:
-      - nix flake update
-      - task: check
-      - task: install
-
-  brew:check:
-    desc: Check whether all Brewfile dependencies are installed
-    cmds:
-      - brew bundle check --verbose --file Brewfile
-
-  brew:install:
+  install:brew:
     desc: Install and upgrade Brewfile dependencies
+    platforms: [darwin]
     cmds:
       - brew bundle install --file Brewfile
 
-  brew:list:
+  install:bun:
+    desc: Install dependencies from the Bun lockfile
+    cmds:
+      - bun install --frozen-lockfile
+
+  update:
+    desc: Update package sources, validate, and install them
+    cmds:
+      - task: update:nix
+      - task: update:bun
+      - task: check
+      - task: install
+
+  update:nix:
+    desc: Update flake inputs
+    cmds:
+      - nix flake update
+
+  update:bun:
+    desc: Update Bun dependencies and lockfile
+    cmds:
+      - bun update
+
+  outdated:bun:
+    desc: List outdated Bun dependencies
+    cmds:
+      - bun outdated
+
+  list:bun:
+    desc: List dependencies from the Bun lockfile
+    cmds:
+      - bun list
+
+  list:brew:
     desc: List dependencies declared in the Brewfile
+    platforms: [darwin]
     cmds:
       - brew bundle list --all --file Brewfile
 
-  brew:cleanup:
+  cleanup:brew:
     desc: Uninstall Homebrew dependencies not declared in the Brewfile
     prompt: Uninstall Homebrew dependencies not declared in the Brewfile?
+    platforms: [darwin]
     cmds:
       - brew bundle cleanup --force --file Brewfile
 
-  profile:
+  profile:nix:
     desc: Show packages installed in the active Nix profile
     cmds:
       - nix profile list
 
-  history:
+  history:nix:
     desc: Show Nix profile generations
     cmds:
       - nix profile history
 
-  rollback:
+  rollback:nix:
     desc: Roll back to the previous Nix profile generation
     prompt: Roll back the active Nix profile?
     cmds:

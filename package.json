@@ -1,0 +1,10 @@
+{
+	"$schema": "https://www.schemastore.org/package.json",
+	"name": "system-packages",
+	"private": true,
+	"dependencies": {
+		"@earendil-works/pi-coding-agent": "^0.83.0",
+		"@openai/codex": "^0.146.0",
+		"opencode-ai": "^1.18.11"
+	}
+}
