@@ -1,4 +1,5 @@
 cask "discord"
+cask "font-geist-mono"
 cask "obsidian"
 cask "orbstack"
 cask "raycast"

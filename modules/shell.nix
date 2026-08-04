@@ -13,9 +13,6 @@ with pkgs; [
   zsh-autosuggestions-abbreviations-strategy
   zsh-abbr
 
-  # font
-  nerd-fonts.geist-mono
-
   starship # prompt
   fastfetch # system info
   atuin # shell history manager
