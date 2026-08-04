@@ -1,5 +1,5 @@
 cask "discord"
-cask "font-geist-mono"
+cask "font-geist-mono-nerd-font"
 cask "obsidian"
 cask "orbstack"
 cask "raycast"
