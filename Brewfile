@@ -1,3 +1,4 @@
+cask "brave-browser"
 cask "discord"
 cask "font-geist-mono-nerd-font"
 cask "obsidian"
