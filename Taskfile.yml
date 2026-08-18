@@ -44,7 +44,7 @@ tasks:
   install:nix:
     desc: Install the package bundle into the Nix profile
     cmds:
-      - nix profile add path:.#default --priority 4
+      - nix profile upgrade system-packages
 
   install:brew:
     desc: Install and upgrade Brewfile dependencies
