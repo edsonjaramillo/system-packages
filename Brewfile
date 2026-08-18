@@ -1,4 +1,5 @@
 cask "1password"
+cask "1password-cli"
 cask "brave-browser"
 cask "discord"
 cask "font-geist-mono-nerd-font"
