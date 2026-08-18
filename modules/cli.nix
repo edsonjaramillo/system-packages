@@ -16,6 +16,7 @@ with pkgs; [
 
   # Search
   fd # find replacement
+  fff # fast file finder
   ripgrep # grep replacement
   fzf # fuzzy finder
   eza # ls replacement
