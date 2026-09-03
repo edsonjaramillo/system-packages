@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "bond-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787780514,
+        "narHash": "sha256-PTzc+TH8IwX61uascytRRjqRyi3FRhkzIFfTramekFc=",
+        "owner": "edsonjaramillo",
+        "repo": "bond",
+        "rev": "1369bd70a9418d7d4ab010368a61f03998a592bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edsonjaramillo",
+        "repo": "bond",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1785747939,
@@ -18,7 +34,25 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "bond-src": "bond-src",
+        "nixpkgs": "nixpkgs",
+        "secrets-src": "secrets-src"
+      }
+    },
+    "secrets-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788052025,
+        "narHash": "sha256-M5RQmCGCLU8NtY8yex6h/fWCnNzVIMrgZ00yW7qjsSg=",
+        "owner": "edsonjaramillo",
+        "repo": "secrets",
+        "rev": "618795db4f0c6d405bfe136459bbf92ec9377f75",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edsonjaramillo",
+        "repo": "secrets",
+        "type": "github"
       }
     }
   },

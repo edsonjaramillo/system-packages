@@ -1,29 +1,55 @@
 {
   description = "Nix package bundles";
 
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-  outputs = {nixpkgs, ...}: let
+    bond-src = {
+      url = "github:edsonjaramillo/bond";
+      flake = false;
+    };
+
+    secrets-src = {
+      url = "github:edsonjaramillo/secrets";
+      flake = false;
+    };
+  };
+
+  outputs = inputs @ {nixpkgs, ...}: let
+    supportedSystems = [
+      "aarch64-darwin"
+      "x86_64-linux"
+    ];
+
+    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
     sharedModules = [
       ./modules/cli.nix
       ./modules/editor.nix
       ./modules/shell.nix
     ];
 
-    mkBundle = system: modules: let
+    mkPackages = system: let
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-    in
-      pkgs.buildEnv {
-        name = "edson-packages";
-        paths = builtins.concatMap (module: import module {inherit pkgs;}) modules;
+      goTools = import ./packages/go-tools.nix {
+        inherit pkgs;
+        sources = {
+          bond = inputs.bond-src;
+          secrets = inputs.secrets-src;
+        };
       };
+      bundle = pkgs.buildEnv {
+        name = "edson-packages";
+        paths =
+          (builtins.concatMap (module: import module {inherit pkgs;}) sharedModules)
+          ++ builtins.attrValues goTools;
+      };
+    in
+      goTools // {default = bundle;};
   in {
-    packages = {
-      aarch64-darwin.default = mkBundle "aarch64-darwin" sharedModules;
-      x86_64-linux.default = mkBundle "x86_64-linux" sharedModules;
-    };
+    packages = forAllSystems mkPackages;
   };
 }
