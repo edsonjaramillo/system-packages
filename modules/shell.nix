@@ -4,7 +4,6 @@ with pkgs; [
   bash
   zsh
 
-  zsh-vi-mode
   zsh-completions
   zsh-syntax-highlighting
   zsh-autosuggestions
