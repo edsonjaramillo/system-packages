@@ -3,11 +3,11 @@
     "bond-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1787780514,
-        "narHash": "sha256-PTzc+TH8IwX61uascytRRjqRyi3FRhkzIFfTramekFc=",
+        "lastModified": 1789092866,
+        "narHash": "sha256-qOxZVaFtC5mUdK9e7m83wwAdsNzt2gJwJtVw0nCZmVM=",
         "owner": "edsonjaramillo",
         "repo": "bond",
-        "rev": "1369bd70a9418d7d4ab010368a61f03998a592bd",
+        "rev": "105da3569e7ae4380dcbea1782248091c959735f",
         "type": "github"
       },
       "original": {
