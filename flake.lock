@@ -42,11 +42,11 @@
     "secrets-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1788052025,
-        "narHash": "sha256-M5RQmCGCLU8NtY8yex6h/fWCnNzVIMrgZ00yW7qjsSg=",
+        "lastModified": 1789500438,
+        "narHash": "sha256-l71nHPIhUXhV7BEZZ64iK9YRfvn7OK47RtgVd5cHAIE=",
         "owner": "edsonjaramillo",
         "repo": "secrets",
-        "rev": "618795db4f0c6d405bfe136459bbf92ec9377f75",
+        "rev": "429dcf2f1512caf889080a80c67d24e5e9e5747c",
         "type": "github"
       },
       "original": {

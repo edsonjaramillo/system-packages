@@ -13,6 +13,7 @@
     pname = "secrets";
     version = "unstable";
     src = sources.secrets;
+    nativeBuildInputs = [pkgs.coreutils];
     vendorHash = "sha256-Gch6BtoOyGVOr/XcpR2Sg5uIAXcMp9WpZ3rpuQFOd+s=";
   };
 }
