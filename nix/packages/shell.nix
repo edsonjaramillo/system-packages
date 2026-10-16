@@ -1,9 +1,11 @@
-{pkgs}:
+# Shells, plugins, prompt, and shell utilities.
+{pkgs, ...}:
 with pkgs; [
   # Shells
   bash
   zsh
 
+  # Zsh plugins
   zsh-completions
   zsh-syntax-highlighting
   zsh-autosuggestions
