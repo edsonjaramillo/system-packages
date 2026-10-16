@@ -1,6 +1,8 @@
-{pkgs}:
+# Editor plus everything per language: compilers, runtimes, package managers,
+# language servers, formatters, linters, and debuggers.
+{pkgs, ...}:
 with pkgs; [
-  #Editor
+  # Editor
   neovim
   tree-sitter
 
@@ -8,25 +10,18 @@ with pkgs; [
   nil
   alejandra
 
-  # AI
-  # (commented out because updates are not frequent enough)
-  # opencode
-  # claude-code
-  # codex
-  copilot-language-server
-
   # Lua
   lua
-  lua-language-server # LSP for Lua
+  lua-language-server
   stylua
 
   # Bash
   bash-language-server
   shfmt
   shellcheck
+  completely # bash completion generator
 
   # Javascript/Typescript
-  deno
   bun
   pnpm
   fnm
@@ -66,7 +61,11 @@ with pkgs; [
   ruff
 
   # Rust
+  rustc
   cargo
+  rust-analyzer
+  rustfmt
+  clippy
 
   # Ruby
   ruby_4_0

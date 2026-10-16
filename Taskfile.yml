@@ -21,18 +21,18 @@ tasks:
   check:nix:
     desc: Validate Nix package bundles for all supported systems
     cmds:
-      - nix flake check --all-systems
+      - nix flake check ./nix --all-systems
 
   check:brew:
     desc: Check whether all Brewfile dependencies are installed
     platforms: [darwin]
     cmds:
-      - brew bundle check --verbose --file Brewfile
+      - brew bundle check --verbose --file brew/Brewfile
 
   build:nix:
     desc: Build the Nix package bundle for this system
     cmds:
-      - nix build path:.#default --no-link --print-build-logs
+      - nix build path:./nix#default --no-link --print-build-logs
 
   install:
     desc: Install all package sources
@@ -44,16 +44,17 @@ tasks:
   install:nix:
     desc: Install the package bundle into the Nix profile
     cmds:
-      - nix profile upgrade system-packages
+      - nix profile upgrade --all
 
   install:brew:
     desc: Install and upgrade Brewfile dependencies
     platforms: [darwin]
     cmds:
-      - brew bundle install --file Brewfile
+      - brew bundle install --file brew/Brewfile
 
   install:bun:
     desc: Install dependencies from the Bun lockfile
+    dir: bun
     cmds:
       - bun install --frozen-lockfile
 
@@ -68,20 +69,23 @@ tasks:
   update:nix:
     desc: Update flake inputs
     cmds:
-      - nix flake update
+      - nix flake update --flake ./nix
 
   update:bun:
     desc: Update Bun dependencies and lockfile
+    dir: bun
     cmds:
       - bun update
 
   outdated:bun:
     desc: List outdated Bun dependencies
+    dir: bun
     cmds:
       - bun outdated
 
   list:bun:
     desc: List dependencies from the Bun lockfile
+    dir: bun
     cmds:
       - bun list
 
@@ -89,14 +93,14 @@ tasks:
     desc: List dependencies declared in the Brewfile
     platforms: [darwin]
     cmds:
-      - brew bundle list --all --file Brewfile
+      - brew bundle list --all --file brew/Brewfile
 
   cleanup:brew:
     desc: Uninstall Homebrew dependencies not declared in the Brewfile
     prompt: Uninstall Homebrew dependencies not declared in the Brewfile?
     platforms: [darwin]
     cmds:
-      - brew bundle cleanup --force --file Brewfile
+      - brew bundle cleanup --force --file brew/Brewfile
 
   profile:nix:
     desc: Show packages installed in the active Nix profile

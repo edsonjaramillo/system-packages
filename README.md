@@ -17,7 +17,7 @@ install the bundle:
 ```sh
 git clone https://github.com/edsonjaramillo/system-packages.git ~/.config/system-packages
 cd ~/.config/system-packages
-nix profile add path:.#default --priority 4
+nix profile add path:./nix#default --priority 4
 ```
 
 The initial installation includes [Task](https://taskfile.dev/), which provides
@@ -49,10 +49,18 @@ task update
 
 ## Package organization
 
-- `modules/cli.nix`: command-line tools
-- `modules/editor.nix`: editors, runtimes, formatters, and language servers
-- `modules/shell.nix`: shells, plugins, prompt, and terminal utilities
-- `modules/apps/shared-apps.nix`: desktop applications shared across platforms
-- `modules/apps/darwin-apps.nix`: macOS-only applications
+- `nix/packages/core.nix`: general command-line tools wanted on every machine
+- `nix/packages/shell.nix`: shells, plugins, prompt, and shell utilities
+- `nix/packages/dev.nix`: editor plus language runtimes, package managers, language servers, formatters, linters, and debuggers
+- `brew/Brewfile`: macOS desktop applications (Homebrew casks)
+- `bun/package.json`: global Bun packages
 
-After changing a module, run `task check:nix` and `task install:nix` to apply it.
+Each group is also exposed as its own bundle, so a lighter machine can install
+only what it needs (`default` combines all of them):
+
+```sh
+nix profile add path:./nix#core
+nix profile add path:./nix#shell
+```
+
+After changing a package list, run `task check:nix` and `task install:nix` to apply it.
