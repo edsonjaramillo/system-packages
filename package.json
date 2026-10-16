@@ -3,6 +3,6 @@
 	"name": "system-packages",
 	"private": true,
 	"dependencies": {
-		"@earendil-works/pi-coding-agent": "^0.84.1"
+		"@earendil-works/pi-coding-agent": "^1.3.0"
 	}
 }
