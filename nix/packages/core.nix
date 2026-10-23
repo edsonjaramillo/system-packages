@@ -11,7 +11,6 @@ with pkgs;
     go-task # makefile replacement
 
     # Management
-    stow # dotfile management
     doppler # secret management
 
     # Version Control
@@ -22,7 +21,6 @@ with pkgs;
 
     # Search
     fd # find replacement
-    fff # fast file finder
     ripgrep # grep replacement
     fzf # fuzzy finder
     eza # ls replacement

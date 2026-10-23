@@ -27,7 +27,6 @@ with pkgs; [
   fnm
   emmet-language-server
   tailwindcss-language-server
-  prettier
   oxlint
   oxfmt
   # contains eslint json css html and markdown language servers

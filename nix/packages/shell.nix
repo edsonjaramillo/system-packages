@@ -15,6 +15,5 @@ with pkgs; [
   zsh-abbr
 
   starship # prompt
-  fastfetch # system info
   atuin # shell history manager
 ]
