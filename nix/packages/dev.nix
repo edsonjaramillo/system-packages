@@ -51,12 +51,9 @@ with pkgs; [
   delve
 
   # Python
-  (python314.withPackages (ps:
-    with ps; [
-      pyyaml
-    ]))
+  python315
   uv
-  basedpyright
+  ty
   ruff
 
   # Rust
