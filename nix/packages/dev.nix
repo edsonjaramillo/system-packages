@@ -22,8 +22,6 @@ with pkgs; [
   completely # bash completion generator
 
   # Javascript/Typescript
-  bun
-  pnpm
   fnm
   emmet-language-server
   tailwindcss-language-server

@@ -1,0 +1,8 @@
+{
+	"$schema": "https://www.schemastore.org/package.json",
+	"name": "npm:system-packages",
+	"private": true,
+	"dependencies": {
+		"bun": "latest"
+	}
+}

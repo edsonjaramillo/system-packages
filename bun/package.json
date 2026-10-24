@@ -1,8 +1,8 @@
 {
 	"$schema": "https://www.schemastore.org/package.json",
-	"name": "system-packages",
+	"name": "bun:system-packages",
 	"private": true,
 	"dependencies": {
-		"@earendil-works/pi-coding-agent": "^1.3.0"
+		"@earendil-works/pi-coding-agent": "latest"
 	}
 }
