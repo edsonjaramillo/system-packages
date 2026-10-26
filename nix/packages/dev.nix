@@ -48,6 +48,10 @@ with pkgs; [
   gofumpt
   delve
 
+  # C / C++
+  clang
+  clang-tools
+
   # Python
   python315
   uv
