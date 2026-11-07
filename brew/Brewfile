@@ -1,5 +1,3 @@
-cask "1password"
-cask "1password-cli"
 cask "font-geist-mono-nerd-font"
 cask "ghostty"
 cask "orbstack"

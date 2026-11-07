@@ -12,6 +12,8 @@ with pkgs;
 
     # Management
     doppler # secret management
+    _1password-cli
+    _1password-gui
 
     # Version Control
     git # version control

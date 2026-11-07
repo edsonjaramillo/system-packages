@@ -23,6 +23,8 @@
         # Allow only these unfree packages, by name.
         config.allowUnfreePredicate = pkg:
           lib.elem (lib.getName pkg) [
+            "1password-cli"
+            "1password" # _1password-gui
             "obsidian"
             "zsh-abbr" # cc-by-nc-sa-40 + hl3
           ];
