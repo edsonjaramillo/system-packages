@@ -23,6 +23,7 @@
         # Allow only these unfree packages, by name.
         config.allowUnfreePredicate = pkg:
           lib.elem (lib.getName pkg) [
+            "obsidian"
             "zsh-abbr" # cc-by-nc-sa-40 + hl3
           ];
       };

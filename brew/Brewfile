@@ -1,7 +1,6 @@
 cask "1password"
 cask "1password-cli"
 cask "font-geist-mono-nerd-font"
-cask "obsidian"
 cask "orbstack"
 cask "raycast"
 cask "wezterm"

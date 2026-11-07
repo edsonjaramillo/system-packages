@@ -35,6 +35,7 @@ with pkgs;
     gum # interactive scripts
     jq # json processor
     lazydocker # docker tui
+    obsidian # markdown notetaking
   ]
   ++ lib.optionals stdenv.hostPlatform.isDarwin [
     gnused # GNU sed (macOS ships BSD sed)
