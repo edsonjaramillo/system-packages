@@ -3,6 +3,7 @@
 	"name": "bun:system-packages",
 	"private": true,
 	"dependencies": {
-		"@earendil-works/pi-coding-agent": "latest"
+		"@earendil-works/pi-coding-agent": "latest",
+		"bunli": "^0.9.1"
 	}
 }
