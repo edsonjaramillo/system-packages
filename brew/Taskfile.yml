@@ -1,0 +1,27 @@
+version: "3"
+
+tasks:
+  check:
+    desc: Check whether all Brewfile dependencies are installed
+    platforms: [darwin]
+    cmds:
+      - brew bundle check --verbose --file Brewfile
+
+  install:
+    desc: Install and upgrade Brewfile dependencies
+    platforms: [darwin]
+    cmds:
+      - brew bundle install --file Brewfile
+
+  list:
+    desc: List dependencies declared in the Brewfile
+    platforms: [darwin]
+    cmds:
+      - brew bundle list --all --file Brewfile
+
+  cleanup:
+    desc: Uninstall Homebrew dependencies not declared in the Brewfile
+    prompt: Uninstall Homebrew dependencies not declared in the Brewfile?
+    platforms: [darwin]
+    cmds:
+      - brew bundle cleanup --force --file Brewfile

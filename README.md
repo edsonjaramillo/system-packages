@@ -29,17 +29,18 @@ Run `task` to list the available commands.
 
 | Command | Description |
 | --- | --- |
-| `task install` | Install the Nix, Homebrew, and Bun packages |
-| `task install:nix` | Install the current bundle into the active Nix profile |
-| `task install:brew` | Install and upgrade Brewfile dependencies on macOS |
-| `task install:bun` | Install dependencies from the Bun lockfile |
-| `task build:nix` | Build the Nix bundle without installing it |
+| `task install` | Install the Nix, Homebrew, npm, and Bun packages |
+| `task nix:install` | Install the current bundle into the active Nix profile |
+| `task brew:install` | Install and upgrade Brewfile dependencies on macOS |
+| `task npm:install` | Install dependencies from the npm lockfile |
+| `task bun:install` | Install dependencies from the Bun lockfile |
+| `task nix:build` | Build the Nix bundle without installing it |
 | `task check` | Check the Nix and Homebrew package sources |
-| `task fmt:nix` | Format all Nix files with Alejandra |
+| `task nix:fmt` | Format all Nix files with Alejandra |
 | `task update` | Update, validate, and install all package sources |
-| `task profile:nix` | List packages in the active Nix profile |
-| `task history:nix` | Show Nix profile generations |
-| `task rollback:nix` | Roll back to the previous profile generation |
+| `task nix:profile` | List packages in the active Nix profile |
+| `task nix:history` | Show Nix profile generations |
+| `task nix:rollback` | Roll back to the previous profile generation |
 
 To update, validate, and install all package sources:
 
@@ -53,6 +54,7 @@ task update
 - `nix/packages/shell.nix`: shells, plugins, prompt, and shell utilities
 - `nix/packages/dev.nix`: editor plus language runtimes, package managers, language servers, formatters, linters, and debuggers
 - `brew/Brewfile`: macOS desktop applications (Homebrew casks)
+- `npm/package.json`: global npm packages
 - `bun/package.json`: global Bun packages
 
 Each group is also exposed as its own bundle, so a lighter machine can install
@@ -63,4 +65,4 @@ nix profile add path:./nix#core
 nix profile add path:./nix#shell
 ```
 
-After changing a package list, run `task check:nix` and `task install:nix` to apply it.
+After changing a package list, run `task nix:check` and `task nix:install` to apply it.

@@ -1,0 +1,22 @@
+version: "3"
+
+tasks:
+  install:
+    desc: Install dependencies from the npm lockfile
+    cmds:
+      - npm ci
+
+  update:
+    desc: Update npm dependencies and lockfile
+    cmds:
+      - npm update
+
+  outdated:
+    desc: List outdated npm dependencies
+    cmds:
+      - npm outdated
+
+  list:
+    desc: List dependencies from the npm lockfile
+    cmds:
+      - npm ls

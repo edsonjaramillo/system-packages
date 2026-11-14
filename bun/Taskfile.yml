@@ -1,0 +1,22 @@
+version: "3"
+
+tasks:
+  install:
+    desc: Install dependencies from the Bun lockfile
+    cmds:
+      - bun install --frozen-lockfile
+
+  update:
+    desc: Update Bun dependencies and lockfile
+    cmds:
+      - bun update
+
+  outdated:
+    desc: List outdated Bun dependencies
+    cmds:
+      - bun outdated
+
+  list:
+    desc: List dependencies from the Bun lockfile
+    cmds:
+      - bun list
